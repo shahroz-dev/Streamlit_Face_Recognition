@@ -1,5 +1,5 @@
 import streamlit as st
-import face_rec
+from Home import face_rec
 import cv2
 import numpy as np
 from streamlit_webrtc import webrtc_streamer
