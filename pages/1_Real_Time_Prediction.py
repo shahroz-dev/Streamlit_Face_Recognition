@@ -6,7 +6,8 @@ import time
 from twilio.rest import Client
 
 account_sid = "ACbf54242144dc7d8f163ed4d03e94d86d"
-auth_token = "83ef734bee74f7e02f28c5c1386cdb3c"
+auth_token = "35a6e809b6eed6b96e2601d4cd4b4587"
+
 client = Client(account_sid, auth_token)
 
 WEBRTC_CLIENT_SETTINGS = ClientSettings(
