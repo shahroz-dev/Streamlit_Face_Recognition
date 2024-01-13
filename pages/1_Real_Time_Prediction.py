@@ -1,22 +1,8 @@
 import streamlit as st
 from Home import face_rec
-from streamlit_webrtc import webrtc_streamer, ClientSettings
+from streamlit_webrtc import webrtc_streamer
 import av
 import time
-from twilio.rest import Client
-
-account_sid = "ACbf54242144dc7d8f163ed4d03e94d86d"
-auth_token = "35a6e809b6eed6b96e2601d4cd4b4587"
-
-client = Client(account_sid, auth_token)
-
-WEBRTC_CLIENT_SETTINGS = ClientSettings(
-    rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
-    media_stream_constraints={"video": True, "audio": False},
-    )
-
-token = client.tokens.create()
-
 
 # st.set_page_config(page_title="Prediction")
 st.subheader("Real-Time Attendance System")
@@ -52,4 +38,4 @@ def video_frame_callback(frame):
     return av.VideoFrame.from_ndarray(pred_img, format="bgr24")
 
 
-webrtc_streamer(key="realtimePrediction", client_settings=WEBRTC_CLIENT_SETTINGS, video_frame_callback=video_frame_callback)
+webrtc_streamer(key="realtimePrediction", video_frame_callback=video_frame_callback)

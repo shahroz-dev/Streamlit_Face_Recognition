@@ -1,21 +1,8 @@
 import streamlit as st
 from Home import face_rec
 import numpy as np
-from streamlit_webrtc import webrtc_streamer, ClientSettings
+from streamlit_webrtc import webrtc_streamer
 import av
-from twilio.rest import Client
-
-account_sid = "ACbf54242144dc7d8f163ed4d03e94d86d"
-auth_token = "35a6e809b6eed6b96e2601d4cd4b4587"
-client = Client(account_sid, auth_token)
-
-WEBRTC_CLIENT_SETTINGS = ClientSettings(
-    rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
-    media_stream_constraints={"video": True, "audio": False},
-    )
-
-token = client.tokens.create()
-
 
 # st.set_page_config(page_title="Registration")
 st.subheader("Registration Form")
@@ -42,7 +29,7 @@ def video_callback_func(frame):
     return av.VideoFrame.from_ndarray(reg_img, format='bgr24')
 
 
-webrtc_streamer(key="registration", client_settings=WEBRTC_CLIENT_SETTINGS, video_frame_callback=video_callback_func)
+webrtc_streamer(key="registration", video_frame_callback=video_callback_func)
 
 # step-3: Save the data in redis database
 if st.button("Submit"):
