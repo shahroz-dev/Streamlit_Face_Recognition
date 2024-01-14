@@ -29,7 +29,15 @@ def video_callback_func(frame):
     return av.VideoFrame.from_ndarray(reg_img, format='bgr24')
 
 
-webrtc_streamer(key="registration", video_frame_callback=video_callback_func)
+webrtc_streamer(key="realtimePrediction",
+                rtc_configuration={  # Add this config
+                    "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
+                },
+                media_stream_constraints={
+                    "video": True,
+                    "audio": False
+                },
+                video_frame_callback=video_callback_func)
 
 # step-3: Save the data in redis database
 if st.button("Submit"):

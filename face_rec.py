@@ -21,8 +21,8 @@ portNumber = 19929
 password = "NPtUZau0Kx1gLuvPcjh8SsnhJ43VSzy8"
 
 r = redis.Redis(host=hostname,
-                      port=portNumber,
-                      password=password)
+                port=portNumber,
+                password=password)
 
 
 # Retrieve Data from database
