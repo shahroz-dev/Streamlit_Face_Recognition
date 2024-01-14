@@ -40,7 +40,7 @@ def video_frame_callback(frame):
 
 webrtc_streamer(key="realtimePrediction",
                 rtc_configuration={  # Add this config
-                    "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
+                    "iceServers": [{"urls": ["stun:global.stun.twilio.com:3478?transport=udp"]}]
                 },
                 media_stream_constraints={
                     "video": True,
